@@ -168,7 +168,7 @@ function init_home() {
     replaceEventListener(get_screen().getElementById("#help"), clickEvnt, function(e)  { window.history.pushState({'page':'help'},   '', '');  goto_help();});
     replaceEventListener(get_screen().getElementById("#graph"), clickEvnt, function(e) { window.history.pushState({'page':'stats'},  '', '');  goto_stats();});
     document.getElementById("title").textContent = `N = ${N}`;
-    document.getElementById("ngames").textContent = `${get_n_games()} / 20 Today`;
+    //document.getElementById("ngames").textContent = `${get_n_games()} / 20 Today`;
     get_screen().getElementById("msgs").textContent = sw_msgs;
     sw_msgs = '';
 }
@@ -487,10 +487,12 @@ function calculateScore() {
 
     if (d_prime > 0.85) {
         _paq.push(['trackEvent', 'Game', 'Win', N]);
-        return 1;
+        //return 1;
+        return 0;
     } else if (d_prime < 0.7) {
         _paq.push(['trackEvent', 'Game', 'Lose', N]);
-        return -1;
+        //return -1;
+        return 0;
     } else {
         _paq.push(['trackEvent', 'Game', 'Nochange', N]);
         return 0;
